@@ -27,34 +27,47 @@
             <th>
                 @Html.DisplayNameFor(model => model.Endereco)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoEnsino.Nome)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cpf)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Endereco)
-                </td>
-                <td>
-                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
-                    <a asp-action="AlterarStatus" asp-route-id="@item.Id">@(item.Ativo ? "Desativar" : "Ativar")</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoEnsino.Nome)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id" title="Editar"><i class="fas fa-edit"></i></a> |
+                <a class="btn btn-info" asp-action="Detalhes" asp-route-id="@item.Id" title="Detalhes"><i class="fas fa-book-reader"></i></a> |
+                <button type="button" class="btn @(item.Ativo ? "btn-danger" : "btn-success")" onclick="usuario.clickAlterarStatus(@item.Id, this)" title="@(item.Ativo ? "Desativar" : "Ativar")">
+                    <i class="fas @(item.Ativo ? "fa-minus-circle" : "fa-plus-circle")"></i>
+                </button>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="~/js/livro.js">
+    </script>
+}

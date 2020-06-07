@@ -56,10 +56,22 @@ namespace Livraria.v1.Repositories
             if (!string.IsNullOrEmpty(stringConsulta))
             {
                 var usuarios = dbSet
-                    .Where(u => EF.Functions.Like(u.Nome, $"%{stringConsulta}%")
-                                || EF.Functions.Like(u.Cpf, $"%{stringConsulta}%"))
+                    .Where(u => u.Ativo == true
+                                && (EF.Functions.Like(u.Nome, $"%{stringConsulta}%")
+                                || EF.Functions.Like(u.Cpf, $"%{stringConsulta}%")))
                     .Include(ie => ie.InstituicaoEnsino)
                     .ToList();
+
+                var usuariosAux = usuarios;
+
+                foreach (var usuario in usuariosAux)
+                {
+                    if (contexto.Set<Emprestimo>().Where(e => e.Usuario.Id == usuario.Id).Count() > 1)
+                    {
+                        usuarios.Remove(usuario);
+                    }
+                }
+                
                 return new ConsultaUsuarioResponse(usuarios);
             }
 

@@ -22,6 +22,7 @@ namespace Livraria.v1.Models
         [Required]
         [DataMember]
         public string Autor { get; set; }
+        public IList<Emprestimo> Emprestimos { get; set; }
 
         //[Required]
         //public []byte Capa { get; private set; }

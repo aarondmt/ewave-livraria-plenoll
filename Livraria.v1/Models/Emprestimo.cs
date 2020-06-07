@@ -13,6 +13,7 @@ namespace Livraria.v1.Models
         public Usuario Usuario { get; set; }
         public DateTime DataEmprestimo { get; set; } = DateTime.Now;
         public DateTime? DataDevolucao { get; set; }
-        public bool Devolvido { get; set; }
+        public DateTime? DataDevolvido { get; set; }
+        //public bool Devolvido { get; set; }
     }
 }

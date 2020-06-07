@@ -15475,11 +15475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\ewave\\Livraria.v1\\Livraria.v1\\Livraria.v1.csproj",
+      "projectUniqueName": "D:\\projects\\TJMT\\ewave-livraria-plenoll\\Livraria.v1\\Livraria.v1.csproj",
       "projectName": "Livraria.v1",
-      "projectPath": "D:\\projects\\ewave\\Livraria.v1\\Livraria.v1\\Livraria.v1.csproj",
+      "projectPath": "D:\\projects\\TJMT\\ewave-livraria-plenoll\\Livraria.v1\\Livraria.v1.csproj",
       "packagesPath": "C:\\Users\\aaron\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\ewave\\Livraria.v1\\Livraria.v1\\obj\\",
+      "outputPath": "D:\\projects\\TJMT\\ewave-livraria-plenoll\\Livraria.v1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

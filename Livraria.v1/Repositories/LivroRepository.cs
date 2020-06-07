@@ -34,9 +34,21 @@ namespace Livraria.v1.Repositories
             if (!string.IsNullOrEmpty(stringConsulta))
             {
                 var livros = dbSet
-                    .Where(l => EF.Functions.Like(l.Titulo, $"%{stringConsulta}%")
-                                || EF.Functions.Like(l.Autor, $"%{stringConsulta}%"))
+                    .Where(l => l.Ativo == true
+                                && (EF.Functions.Like(l.Titulo, $"%{stringConsulta}%")
+                                || EF.Functions.Like(l.Autor, $"%{stringConsulta}%")))
                     .ToList();
+
+                var livrosAux = livros;
+
+                foreach (var livro in livrosAux)
+                {
+                    if (contexto.Set<Emprestimo>().Any(e => e.Livro.Id == livro.Id))
+                    {
+                        livros.Remove(livro);
+                    }
+                }
+
                 return new ConsultaLivroResponse(livros);
             }
 

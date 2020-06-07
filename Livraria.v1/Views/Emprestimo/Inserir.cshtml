@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="control-label">Aluno Selecionado</label>
                         <input type="text" id="input-usuario-selecionado" disabled class="form-control" />
-                        <input type="hidden" asp-for="@Model.UsuarioId" id="input-usuario-selecionado-id" class="form-control" />
+                        <input type="hidden" asp-for="UsuarioId" id="input-usuario-selecionado-id" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     <div class="form-group">
                         <label class="control-label">Livro Selecionado</label>
                         <input type="text" id="input-livro-selecionado" disabled class="form-control" />
-                        <input type="hidden" asp-for="@Model.LivroId" id="input-livro-selecionado-id" class="form-control" />
+                        <input type="hidden" asp-for="LivroId" id="input-livro-selecionado-id" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -102,7 +102,7 @@
             <div class="form-group">
                 <label class="control-label">Data da Reserva</label>
                 <div class="input-group">
-                    <input type="date" asp-for="@Model.DataEmprestimo" class="form-control" />
+                    <input type="date" asp-for="DataEmprestimo" class="form-control" />
                     <span class="input-group-btn">
                         <input type="submit" asp-action="Reservar" value="Reservar" class="btn btn-success" />
                     </span>

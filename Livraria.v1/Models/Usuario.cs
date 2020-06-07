@@ -29,5 +29,6 @@ namespace Livraria.v1.Models
         public int InstituicaoEnsinoId { get; set; }
         [DataMember]
         public virtual InstituicaoEnsino InstituicaoEnsino { get; set; }
+        public IList<Emprestimo> Emprestimos { get; set; }
     }
 }

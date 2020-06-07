@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iJQ+FYz9ZmnrWceivDNz8WY0OmrG0NzJ/0iDeWO9MHrW2Br4CmFfc+iP6UqKRvqSTNj2QOWQIhh73LDP58iIeQ==",
+  "dgSpecHash": "rj0YzPvTCumUmR+Hzy6iSXFIxfX+B4Jtx/oSS0hIVSvrZK0BNkwdCHHXO0AoNege7XSNAgPobnSEkUwd1jxaew==",
   "success": true,
-  "projectFilePath": "D:\\projects\\ewave\\Livraria.v1\\Livraria.v1\\Livraria.v1.csproj",
+  "projectFilePath": "D:\\projects\\TJMT\\ewave-livraria-plenoll\\Livraria.v1\\Livraria.v1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aaron\\.nuget\\packages\\libuv\\1.10.0\\libuv.1.10.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\messagepack\\1.7.3.4\\messagepack.1.7.3.4.nupkg.sha512",

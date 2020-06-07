@@ -36,13 +36,16 @@ namespace Livraria.v1.Controllers
         //[ValidateAntiForgeryToken]
         public IActionResult Inserir(Emprestimo emprestimo)
         {
-            if (ModelState.IsValid)
-            {
-                emprestimo.Ativo = true;
-                //emprestimoRepository.Inserir(emprestimo);
-                //return RedirectToAction("LivroHome");
-            }
-            return View(emprestimo);
+            emprestimo.DataDevolucao = emprestimo.DataEmprestimo.AddDays(30);
+            emprestimoRepository.Inserir(emprestimo);
+            return RedirectToAction("EmprestimoHome");
+        }
+
+        [HttpPost]
+        public IActionResult Devolver([FromBody]int id)
+        {
+            emprestimoRepository.Devolver(id);
+            return RedirectToAction(nameof(EmprestimoHome));
         }
 
         [HttpPost]
