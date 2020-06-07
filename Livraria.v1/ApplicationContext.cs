@@ -1,9 +1,5 @@
 ﻿using Livraria.v1.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Livraria.v1
 {
@@ -21,6 +17,7 @@ namespace Livraria.v1
             modelBuilder.Entity<Livro>().HasKey(t => t.Id);
             modelBuilder.Entity<InstituicaoEnsino>().HasKey(t => t.Id);
             modelBuilder.Entity<Emprestimo>().HasKey(e => e.Id);
+            modelBuilder.Entity<Atraso>().HasKey(e => e.Id);
         }
     }
 }
