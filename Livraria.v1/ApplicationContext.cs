@@ -18,6 +18,7 @@ namespace Livraria.v1
             modelBuilder.Entity<InstituicaoEnsino>().HasKey(t => t.Id);
             modelBuilder.Entity<Emprestimo>().HasKey(e => e.Id);
             modelBuilder.Entity<Atraso>().HasKey(e => e.Id);
+            modelBuilder.Entity<Reserva>().HasKey(e => e.Id);
         }
     }
 }

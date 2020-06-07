@@ -11,12 +11,24 @@ namespace Livraria.v1.Repositories
     {
         IList<Emprestimo> GetEmprestimo(int? id = null);
         void Inserir(Emprestimo novoEmprestimo);
+        void Reservar(Reserva reserva);
         void Devolver(int id);
+        void Atraso(int id);
     }
     public class EmprestimoRepository : BaseRepository<Emprestimo>, IEmprestimoRepository
     {
         public EmprestimoRepository(ApplicationContext contexto) : base(contexto)
         {
+        }
+
+        public void Atraso(int id)
+        {
+            var emprestimo = dbSet.Where(e => e.Id == id).FirstOrDefault();
+            if (emprestimo != null)
+            {
+                contexto.Set<Atraso>().Add(new Atraso() { EmprestimoId = emprestimo.Id });
+                contexto.SaveChanges();
+            }
         }
 
         public void Devolver(int id)
@@ -34,6 +46,7 @@ namespace Livraria.v1.Repositories
                 var emprestimos = dbSet
                     .Include(l => l.Livro)
                     .Include(u => u.Usuario)
+                    .Include(a => a.Atraso)
                     .Where(i => i.Id == id)
                     .ToList();
                 return emprestimos;
@@ -42,12 +55,19 @@ namespace Livraria.v1.Repositories
             return dbSet
                     .Include(l => l.Livro)
                     .Include(u => u.Usuario)
+                    .Include(a => a.Atraso)
                     .ToList();
         }
 
         public void Inserir(Emprestimo novoEmprestimo)
         {
             dbSet.Add(novoEmprestimo);
+            contexto.SaveChanges();
+        }
+
+        public void Reservar(Reserva reserva)
+        {
+            contexto.Set<Reserva>().Add(reserva);
             contexto.SaveChanges();
         }
     }

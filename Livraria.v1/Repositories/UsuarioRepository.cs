@@ -62,7 +62,8 @@ namespace Livraria.v1.Repositories
                     .Include(ie => ie.InstituicaoEnsino)
                     .ToList();
 
-                var usuariosAux = usuarios;
+                List<Usuario> usuariosAux = new List<Usuario>();
+                usuariosAux.AddRange(usuarios);
 
                 foreach (var usuario in usuariosAux)
                 {
@@ -70,8 +71,28 @@ namespace Livraria.v1.Repositories
                     {
                         usuarios.Remove(usuario);
                     }
+                    else
+                    {
+                        contexto.Entry(usuario)
+                            .Collection(e => e.Emprestimos)
+                            .Query()
+                            .Include(a => a.Atraso)
+                            .Load();
+
+                        if (usuario.Emprestimos.Count > 0)
+                        {
+                            foreach (var emprestimo in usuario.Emprestimos)
+                            {
+                                if (emprestimo.Atraso != null && (emprestimo.Atraso.DataRetorno == null || emprestimo.Atraso.DataRetorno > DateTime.Now))
+                                {
+                                    usuarios.Remove(usuario);
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
-                
+
                 return new ConsultaUsuarioResponse(usuarios);
             }
 

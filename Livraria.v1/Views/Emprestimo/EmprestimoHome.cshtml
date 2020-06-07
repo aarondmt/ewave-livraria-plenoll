@@ -36,7 +36,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr class="@((item.DataDevolvido == null && (item.DataDevolucao.Value - item.DataEmprestimo).TotalDays > 0) ? "warning" : "")">
+            <tr class="@((item.DataDevolvido == null && (DateTime.Now - item.DataDevolucao.Value).TotalDays > 0) ? "warning" : "")">
                 <td>
                     @Html.DisplayFor(modelItem => item.Livro.Titulo)
                 </td>
@@ -55,18 +55,22 @@
                 @*<td style="text-align: center">
                         <i class="far fa-@(item.Devolvido ? "check-square" : "square")"></i>
                     </td>*@
-                <td>
-                    @{
-                        if (item.DataDevolvido == null)
+            <td>
+                @{
+                    if (item.DataDevolvido == null)
+                    {
+                        if (item.Atraso == null && item.DataDevolvido == null && (DateTime.Now - item.DataDevolucao.Value).TotalDays > 0)
                         {
-                            <a class="btn btn-warning" onclick="emprestimo.clickDevolver(@item.Id)"><i class="fas fa-undo"></i></a>
+                            <a class="btn btn-danger" onclick="emprestimo.clickAtraso(@item.Id)" title="Adicionar Atraso"><i class="fas fa-plus"></i></a>
                         }
-                        else
-                        {
-                            <button class="btn btn-success" disabled><i class="fas fa-check"></i></button>
-                        }
+                        <a class="btn btn-warning" onclick="emprestimo.clickDevolver(@item.Id)" title="Devolver"><i class="fas fa-undo"></i></a>
                     }
-                </td>
+                    else
+                    {
+                        <button class="btn btn-success" disabled><i class="fas fa-check"></i></button>
+                    }
+                }
+            </td>
             </tr>
         }
     </tbody>

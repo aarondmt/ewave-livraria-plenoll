@@ -4,14 +4,16 @@ using Livraria.v1;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Livraria.v1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200607195034_AtualizacaoAtraso")]
+    partial class AtualizacaoAtraso
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,8 +35,7 @@ namespace Livraria.v1.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmprestimoId")
-                        .IsUnique();
+                    b.HasIndex("EmprestimoId");
 
                     b.ToTable("Atraso");
                 });
@@ -115,31 +116,6 @@ namespace Livraria.v1.Migrations
                     b.ToTable("Livro");
                 });
 
-            modelBuilder.Entity("Livraria.v1.Models.Reserva", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo");
-
-                    b.Property<DateTime>("DataReserva");
-
-                    b.Property<DateTime>("DataRetirada");
-
-                    b.Property<int>("LivroId");
-
-                    b.Property<int>("UsuarioId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LivroId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Reserva");
-                });
-
             modelBuilder.Entity("Livraria.v1.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -173,8 +149,8 @@ namespace Livraria.v1.Migrations
             modelBuilder.Entity("Livraria.v1.Models.Atraso", b =>
                 {
                     b.HasOne("Livraria.v1.Models.Emprestimo", "Emprestimo")
-                        .WithOne("Atraso")
-                        .HasForeignKey("Livraria.v1.Models.Atraso", "EmprestimoId")
+                        .WithMany()
+                        .HasForeignKey("EmprestimoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -187,19 +163,6 @@ namespace Livraria.v1.Migrations
 
                     b.HasOne("Livraria.v1.Models.Usuario", "Usuario")
                         .WithMany("Emprestimos")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Livraria.v1.Models.Reserva", b =>
-                {
-                    b.HasOne("Livraria.v1.Models.Livro", "Livro")
-                        .WithMany()
-                        .HasForeignKey("LivroId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Livraria.v1.Models.Usuario", "Usuario")
-                        .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

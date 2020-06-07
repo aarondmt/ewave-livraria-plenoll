@@ -56,6 +56,7 @@ namespace Livraria.v1
             services.AddTransient<ILivroRepository, LivroRepository>();
             services.AddTransient<IEmprestimoRepository, EmprestimoRepository>();
             services.AddTransient<IAtrasoRepository, AtrasoRepository>();
+            services.AddTransient<IReservaRepository, ReservaRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

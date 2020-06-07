@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20200606232546_PrimeiraMigracao.Designer.cs" />
     <Compile Remove="Migrations\20200606233010_PrimeiraMigracao.cs" />
     <Compile Remove="Migrations\20200606233010_PrimeiraMigracao.Designer.cs" />
+    <Compile Remove="Migrations\20200607194828_AtualizacaoAtraso.cs" />
+    <Compile Remove="Migrations\20200607194828_AtualizacaoAtraso.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

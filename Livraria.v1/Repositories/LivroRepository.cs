@@ -39,11 +39,16 @@ namespace Livraria.v1.Repositories
                                 || EF.Functions.Like(l.Autor, $"%{stringConsulta}%")))
                     .ToList();
 
-                var livrosAux = livros;
+                List<Livro> livrosAux = new List<Livro>();
+                livrosAux.AddRange(livros);
 
                 foreach (var livro in livrosAux)
                 {
                     if (contexto.Set<Emprestimo>().Any(e => e.Livro.Id == livro.Id))
+                    {
+                        livros.Remove(livro);
+                    }
+                    else if (contexto.Set<Reserva>().Any(e => e.Livro.Id == livro.Id))
                     {
                         livros.Remove(livro);
                     }

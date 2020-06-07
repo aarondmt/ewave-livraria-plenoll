@@ -49,6 +49,22 @@ namespace Livraria.v1.Controllers
         }
 
         [HttpPost]
+        public IActionResult Atraso([FromBody] int id)
+        {
+            emprestimoRepository.Atraso(id);
+            return RedirectToAction(nameof(EmprestimoHome));
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public IActionResult Reservar(Emprestimo emprestimo)
+        {
+            emprestimo.DataDevolucao = emprestimo.DataEmprestimo.AddDays(30);
+            emprestimoRepository.Inserir(emprestimo);
+            return RedirectToAction("EmprestimoHome");
+        }
+
+        [HttpPost]
         public ConsultaUsuarioResponse ConsultaUsuario([FromBody] string valor)
         {
             return usuarioRepository.GetUsuarioPorNomeOuCpf(valor);

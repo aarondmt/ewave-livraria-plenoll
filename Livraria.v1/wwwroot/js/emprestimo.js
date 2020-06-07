@@ -96,6 +96,24 @@
             });
         });
     }
+
+    clickAtraso(id) {
+        $.ajax({
+            url: '/emprestimo/atraso',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(id)
+        }).done(function (response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Operação realizada com sucesso!',
+                showConfirmButton: false,
+                timer: 1500
+            }).then((result) => {
+                location.reload();
+            });
+        });
+    }
 }
 
 var emprestimo = new Emprestimo();
