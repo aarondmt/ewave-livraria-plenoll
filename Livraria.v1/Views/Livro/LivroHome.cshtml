@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Livro>;
+
+@{
+    ViewData["Title"] = "Livros";
+}
+
+<h2>Livros</h2>
+
+<p>
+    <a class="btn btn-info" asp-action="Inserir">Novo Livro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sinopse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sinopse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @(item.Ativo ? "Sim" : "Não")
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id" title="Editar"><i class="fas fa-edit"></i></a> |
+                <a class="btn btn-info" asp-action="Detalhes" asp-route-id="@item.Id" title="Detalhes"><i class="fas fa-book-reader"></i></a> |
+                <button type="button" class="btn @(item.Ativo ? "btn-danger" : "btn-success")" onclick="livro.clickAlterarStatus(@item.Id, this)" title="@(item.Ativo ? "Desativar" : "Ativar")">
+                    <i class="fas @(item.Ativo ? "fa-minus-circle" : "fa-plus-circle")"></i>
+                </button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/js/livro.js">
+    </script>
+}

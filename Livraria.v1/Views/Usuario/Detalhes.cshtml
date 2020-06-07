@@ -1,0 +1,60 @@
+﻿@model Usuario;
+
+@{
+    ViewData["Title"] = "Detalhes do Usuário";
+}
+
+<h2>Detalhes do Usuárioss</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InstituicaoEnsino.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InstituicaoEnsino.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+        <dd>
+            @(Model.Ativo ? "Sim" : "Não")
+        </dd>
+    </dl>
+</div>
+<hr />
+<div>
+    <a class="btn btn-warning" asp-action="Editar" asp-route-id="@Model.Id">Editar</a> |
+    <a class="btn btn-info" asp-action="UsuarioHome">Voltar para Lista de Usuários</a>
+</div>
