@@ -1,9 +1,11 @@
 # ewave-livraria-plenoll
 
+Algumas funcionalidades não consegui realizar todas as validações, mas tentei implementar tudo que pudesse demonstrar um pouco do meu conhecimento.
+
 ## Projeto realizado com ASP.NET Core e Entity Framework Core
 
 O sistema "To Do" tem como tela ínicial uma grid com listando os empréstimos realizados e um botão para adicionar novos empréstimos.
-Nesta grid, a última coluna contem um botão para efetuar a devolução do livro e mais um botão que aparece quando o empréstimo está atrasdo.
+Nesta grid, a última coluna contem um botão para efetuar a devolução do livro e mais um botão que aparece quando o empréstimo está atrasado.
 Para identificar que um empréstimo está atrasado as linhas com empréstimos atrasados ficam em vermelho e aparece um botão com a opção de adiciona-lo a lista de atrasados.
 A navegação para as telas dos usuários, instituição de ensino e livros é realizada pela barra na parte superior da tela.
 
@@ -21,4 +23,4 @@ Ao encontrar os registros que deseja, basta clicar na linha dos registros em que
 
 ## Projeto de Teste Unitário do sistema feito em xUnit
 
-Infelizmente não possuo muito conhecimento em testes unitários, porém realizei a criação de uma classe para realizar um teste d inserção de usuário.
+Infelizmente não possuo muito conhecimento em testes unitários, porém realizei a criação de uma classe para realizar um teste de inserção de usuário.
