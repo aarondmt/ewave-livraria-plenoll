@@ -41,6 +41,19 @@ namespace Livraria.v1.Controllers
             return RedirectToAction("EmprestimoHome");
         }
 
+        public IActionResult Reserva()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public IActionResult Reserva(Reserva reserva)
+        {
+            emprestimoRepository.Reservar(reserva);
+            return RedirectToAction("EmprestimoHome");
+        }
+
         [HttpPost]
         public IActionResult Devolver([FromBody]int id)
         {

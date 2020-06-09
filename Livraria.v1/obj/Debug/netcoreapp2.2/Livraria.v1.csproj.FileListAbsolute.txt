@@ -44,3 +44,4 @@ D:\projects\TJMT\ewave-livraria-plenoll\Livraria.v1\obj\Debug\netcoreapp2.2\Livr
 D:\projects\TJMT\ewave-livraria-plenoll\Livraria.v1\obj\Debug\netcoreapp2.2\Livraria.v1.pdb
 D:\projects\TJMT\ewave-livraria-plenoll\Livraria.v1\obj\Debug\netcoreapp2.2\Livraria.v1.genruntimeconfig.cache
 D:\projects\TJMT\ewave-livraria-plenoll\Livraria.v1\obj\Debug\netcoreapp2.2\Livraria.v1.csproj.CopyComplete
+D:\projects\TJMT\ewave-livraria-plenoll\Livraria.v1\obj\Debug\netcoreapp2.2\Razor\Views\Emprestimo\Reserva.cshtml.g.cs
