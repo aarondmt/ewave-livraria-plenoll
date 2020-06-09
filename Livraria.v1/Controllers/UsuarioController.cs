@@ -62,7 +62,7 @@ namespace Livraria.v1.Controllers
             {
                 usuario.Ativo = true;
                 usuarioRepository.Inserir(usuario);
-                return RedirectToAction("UsuarioHome");
+                return RedirectToAction(nameof(UsuarioHome));
             }
             return View(usuario);
         }

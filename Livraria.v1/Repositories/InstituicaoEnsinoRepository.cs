@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 namespace Livraria.v1.Repositories
@@ -12,6 +13,7 @@ namespace Livraria.v1.Repositories
         InstituicaoEnsino Atualizar(InstituicaoEnsino instituicaoEnsino);
         void AlterarStatus(int id);
         IList<InstituicaoEnsino> GetInstituicaoEnsino(int? id = null);
+        InstituicaoEnsino GetInstituicaoEnsinoId(int id);
         bool InstituicaoEnsinoExists(int id);
     }
     public class InstituicaoEnsinoRepository : BaseRepository<InstituicaoEnsino>, IInstituicaoEnsinoRepository
@@ -42,6 +44,11 @@ namespace Livraria.v1.Repositories
             }
 
             return dbSet.ToList();
+        }
+
+        public InstituicaoEnsino GetInstituicaoEnsinoId(int id)
+        {
+            return dbSet.Where(i => i.Id == id).FirstOrDefault();
         }
 
         public InstituicaoEnsino Inserir(InstituicaoEnsino novaInstituicao)

@@ -36,7 +36,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr class="@((item.DataDevolvido == null && (DateTime.Now - item.DataDevolucao.Value).TotalDays > 0) ? "warning" : "")">
+            <tr class="@((item.DataDevolvido == null && (DateTime.Now - item.DataDevolucao.Value).TotalDays > 0) ? "danger" : "")">
                 <td>
                     @Html.DisplayFor(modelItem => item.Livro.Titulo)
                 </td>
